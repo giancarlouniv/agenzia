@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{url('/')}}/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="}https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{url('/')}}/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -20,13 +20,13 @@
 
 
     <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="{{url('/')}}/plugins/jquery/jquery.min.js"></script>
 
-    <script src="/plugins/moment/moment.min.js"></script>
-    <script src="/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <script src="{{url('/')}}/plugins/moment/moment.min.js"></script>
+    <script src="{{url('/')}}/plugins/inputmask/jquery.inputmask.min.js"></script>
 
     <!-- Select2 -->
-    <script src="/plugins/select2/js/select2.full.min.js"></script>
+    <script src="{{url('/')}}/plugins/select2/js/select2.full.min.js"></script>
 
 
 </head>
