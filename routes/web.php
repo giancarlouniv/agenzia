@@ -2,13 +2,9 @@
 
     use Illuminate\Support\Facades\Route;
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
-
-    Route::middleware(['auth'])->get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::middleware('auth')->get('/', '\App\Http\Controllers\HomeController@index');
+    Route::middleware('auth')->get('/dashboard', '\App\Http\Controllers\HomeController@index')->name('dashboard');
+    Route::middleware('auth')->get('/home', '\App\Http\Controllers\HomeController@index')->name('home');
 
     Route::group(['middleware' => ['auth']], function () {
         Route::resource('roles', '\App\Http\Controllers\RoleController');
@@ -28,4 +24,3 @@
 
     Auth::routes();
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
