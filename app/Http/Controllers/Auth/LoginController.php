@@ -31,8 +31,12 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
+
+    protected function authenticated() {
+        return redirect(env('APP_URL').'dashboard');
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
