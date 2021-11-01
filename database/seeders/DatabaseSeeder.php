@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
         $this->call(HouseTypeSeeder::class);
         $this->call(PermissionTableSeeder::class);
         $this->call(CreateAdminUserSeeder::class);
-        \App\Models\House::factory()->count(200)->create();
-        \App\Models\Customer::factory()->count(50)->create();
         \App\Models\Person::factory()->count(200)->create();
-        \App\Models\HousePerson::factory()->count(20)->create();
-        \App\Models\HouseCustomer::factory()->count(10)->create();
+        \App\Models\House::factory()->count(200)->create();
+        //\App\Models\Customer::factory()->count(50)->create();
+        //\App\Models\HousePerson::factory()->count(20)->create();
+        //\App\Models\HouseCustomer::factory()->count(10)->create();
     }
 }

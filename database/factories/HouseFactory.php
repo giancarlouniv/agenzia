@@ -23,6 +23,7 @@ class HouseFactory extends Factory
     {
         return [
             'user_id' => rand(1,4),
+            'person_id' => rand(1,50),
             'is_archiviato' => rand(0,1),
             'contract_id' => rand(1,2),
             'house_type_id' => rand(1,5),
