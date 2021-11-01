@@ -80,7 +80,7 @@
                 });
 
                 jQuery.ajax({
-                    url: "{{url('persons')}}/search/",
+                    url: "{{url('person')}}/search/",
                     method: 'post',
                     datatype: 'json',
                     data: { search: value},

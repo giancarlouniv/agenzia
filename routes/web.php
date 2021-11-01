@@ -10,7 +10,7 @@
         Route::resource('roles', '\App\Http\Controllers\RoleController');
         Route::resource('permissions', '\App\Http\Controllers\PermissionController');
         Route::resource('users', '\App\Http\Controllers\UserController');
-        Route::post('persons/search', [\App\Http\Controllers\PersonController::class, 'search']);
+        Route::post('person/search', [\App\Http\Controllers\PersonController::class, 'search']);
         Route::resource('persons', '\App\Http\Controllers\PersonController');
         Route::resource('houses', '\App\Http\Controllers\HouseController');
         Route::resource('customers', '\App\Http\Controllers\CustomerController');
