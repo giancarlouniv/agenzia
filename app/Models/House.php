@@ -29,8 +29,8 @@ class House extends Model
         return $this->belongsToMany(\App\Models\Customer::class, 'house_customers');
     }
 
-    public function persons(){
-        return $this->belongsToMany(\App\Models\Person::class, 'house_persons');
+    public function person(){
+        return $this->belongsTo(\App\Models\Person::class);
     }
 
     public function photos(){

@@ -47,40 +47,48 @@
                     </li>
                 @endcan
                 @can('houses-menu')
-                        <li class="nav-header">IMMOBILI</li>
-                        <li class="nav-item">
-                            <a href="{{url('/houses')}}" class="nav-link {{(request()->is('houses') || request()->is('houses/*'))?'active':''}}">
-                                <i class="far fa-building nav-icon"></i>
-                                <p>Immobili</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('/houses_archivied')}}" class="nav-link {{(request()->is('houses_archivied') || request()->is('houses_archivied/*'))?'active':''}}">
-                                <i class="fas fa-building nav-icon"></i>
-                                <p>Archiviati</p>
-                            </a>
-                        </li>
+                    <li class="nav-header">IMMOBILI</li>
+                    <li class="nav-item">
+                        <a href="{{url('/houses')}}" class="nav-link {{(request()->is('houses') || request()->is('houses/*'))?'active':''}}">
+                            <i class="far fa-building nav-icon"></i>
+                            <p>Lista Immobili</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{url('/houses_archivied')}}" class="nav-link {{(request()->is('houses_archivied') || request()->is('houses_archivied/*'))?'active':''}}">
+                            <i class="fas fa-building nav-icon"></i>
+                            <p>Archiviati</p>
+                        </a>
+                    </li>
                 @endcan
-                    @can('richieste-menu')
-                        <li class="nav-header">RICHIESTE</li>
-                    @endcan
-                    @can('nominativi-menu')
-                        <li class="nav-header">NOMINATIVI</li>
-                        <li class="nav-item">
-                            <a href="{{url('/persons')}}" class="nav-link {{(request()->is('persons') || request()->is('persons/*'))?'active':''}}">
-                                <i class="fas fa-users"></i>
-                                <p>
-                                    Nominativi
-                                </p>
-                            </a>
-                        </li>
-                    @endcan
-                    @can('customers-menu')
-                        <li class="nav-header">CLIENTI</li>
-                    @endcan
-                    @can('impostazioni-menu')
-                        <li class="nav-header">IMPOSTAZIONI</li>
-                    @endcan
+                @can('richieste-menu')
+                    <li class="nav-header">RICHIESTE</li>
+                    <li class="nav-item">
+                        <a href="{{url('/richieste')}}" class="nav-link {{(request()->is('richieste') || request()->is('richieste/*'))?'active':''}}">
+                            <i class="fas fa-question"></i>
+                            <p class="ml-1">
+                                Lista Richieste
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('nominativi-menu')
+                    <li class="nav-header">NOMINATIVI</li>
+                    <li class="nav-item">
+                        <a href="{{url('/persons')}}" class="nav-link {{(request()->is('persons') || request()->is('persons/*'))?'active':''}}">
+                            <i class="fas fa-users"></i>
+                            <p class="ml-1">
+                                Nominativi
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('customers-menu')
+                    <li class="nav-header">CLIENTI</li>
+                @endcan
+                @can('impostazioni-menu')
+                    <li class="nav-header">IMPOSTAZIONI</li>
+                @endcan
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault();

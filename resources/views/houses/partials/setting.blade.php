@@ -25,7 +25,7 @@
             <div class="col-sm-10">
                 <select name="person_id" class="select2" style="width: 100%;" id="person_id">
                    @foreach($persons as $person)
-                        <option value="{{$person->id}}" @if($person->id == $house->persons->first()->id) selected @endif>
+                        <option value="{{$person->id}}" @if($person->id == $house->person->id) selected @endif>
                             {{$person->surname . ' ' . $person->name}} ({{$person->phone}}) </option>
                     @endforeach
                 </select>

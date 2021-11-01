@@ -14,6 +14,7 @@
         Route::resource('persons', '\App\Http\Controllers\PersonController');
         Route::resource('houses', '\App\Http\Controllers\HouseController');
         Route::resource('customers', '\App\Http\Controllers\CustomerController');
+        Route::resource('richieste', '\App\Http\Controllers\RichiesteController');
 
         Route::post('upload/house/{house_id}', [App\Http\Controllers\HouseController::class, 'uploadphoto']);
         Route::post('uploadplanimetria/house/{house_id}', [App\Http\Controllers\HouseController::class, 'uploadphoto_planimetria']);

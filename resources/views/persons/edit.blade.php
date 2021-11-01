@@ -156,6 +156,19 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h5>Immobili</h5>
+                        @foreach($person->houses as $house)
+                            <b>{{$house->houseType->name}} in {{$house->contract->name}} </b> : {{$house->address}} <small>({{$house->city}})</small>  {{$house->mq}} mq - {{$house->vani}} vani<br>
+                        @endforeach
+                        <hr>
+                        <h5>Richieste</h5>
+                        @foreach($person->richieste as $richiesta)
+                            <b>{{$richiesta->house_type->name}} in {{$richiesta->contract->name}}</b>: {{$richiesta->vani}} vani - {{$richiesta->mutuo}} <br>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>

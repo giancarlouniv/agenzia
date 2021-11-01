@@ -1,13 +1,13 @@
 @extends('layouts.page')
-@section('title','Immobili')
+@section('title','Richieste')
 @section('content')
     <div class="container-fluid mb-2">
         <div class="row">
             <div class="col-md-6">
-                <h2>Gestione Immobili</h2>
+                <h2>Gestione Richieste</h2>
             </div>
             <div class="col-md-6 text-right">
-                    <a class="btn btn-success" href="{{ route('houses.create') }}">Nuovo Immobile</a>
+                <a class="btn btn-success" href="{{ route('richieste.create') }}">Nuova Richieste</a>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Lista Immobili della piattaforma</h3>
+                        <h3 class="card-title">Lista Richieste della piattaforma</h3>
                     </div>
                     <div class="card-body table-responsive p-0">
                         <div class="card-body table-responsive p-2">
@@ -27,49 +27,37 @@
                                     <th>Nominativo</th>
                                     <th>Contratto</th>
                                     <th>Tipologia</th>
-                                    <th>Indirizzo</th>
-                                    <th>Mq</th>
                                     <th>Vani</th>
+                                    <th>Mutuo</th>
                                     <th>Prezzo</th>
                                     <th>&nbsp;</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @forelse($houses as $house)
+                                @forelse($richieste as $richiesta)
                                     <tr>
-                                        <td style="white-space: nowrap">
-                                            {{$house->person->name[0]}}. {{$house->person->surname}}
-                                        </td>
-                                        <td style="white-space: nowrap">
-                                                {{$house->contract->name}}
-                                        </td>
-                                        <td style="white-space: nowrap">{{$house->houseType->name}}</td>
-                                        <td style="white-space: nowrap"><b>{{$house->address}}</b> ({{ucfirst($house->city)}})</td>
-                                        <td style="white-space: nowrap">{{$house->mq}} mq</td>
-                                        <td style="white-space: nowrap">{{$house->vani}}</td>
-                                        <td style="white-space: nowrap">€ {{number_format($house->prezzo, 2, ',', '.')}}</td>
-                                        <td style="white-space: nowrap">
-                                                <a href="{{url('/houses')}}/{{$house->id}}/edit" class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></a>
-                                                {!! Form::open(['method' => 'DELETE','route' => ['houses.destroy', $house->id],'style'=>'display:inline', 'id' => 'form_'.$house->id]) !!}
-                                                {{ Form::button('<i class="far fa-trash-alt" aria-hidden="true"></i>', ['class' => 'btn btn-danger btn-sm', 'type' => 'button', 'onclick' => "faiqualcosa(".$house->id.")"]) }}
-                                                {!! Form::close() !!}
-                                        </td>
+                                        <td>{{$richiesta->person->name[0]}}. {{$richiesta->person->surname}} </td>
+                                        <td>{{$richiesta->contract->name}} </td>
+                                        <td>{{$richiesta->house_type->name}} </td>
+                                        <td>{{$richiesta->vani}} </td>
+                                        <td>{{$richiesta->mutuo}} </td>
+                                        <td>{{$richiesta->max_price}} </td>
                                     </tr>
                                 @empty
                                     <tr>
                                         <td colspan="8" style="text-align: center">
-                                            <i>Nessun immobile presente</i>
+                                            <i>Nessuna richiesta presente</i>
                                         </td>
                                     </tr>
                                 @endforelse
                                 </tbody>
                             </table>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <span id="link">{!! $houses->links('pagination::bootstrap-4') !!}</span>
+    </div>
+    <span id="link">{!! $richieste->links('pagination::bootstrap-4') !!}</span>
     </div>
 
     <style>
@@ -100,7 +88,7 @@
 
     <script>
         function faiqualcosa(id){
-            if(!confirm('Sicuro di voler eliminare questo immobile?')){
+            if(!confirm('Sicuro di voler eliminare questa richiesta?')){
                 $("#form_"+id).submit(function(e){
                     e.preventDefault();
                 });

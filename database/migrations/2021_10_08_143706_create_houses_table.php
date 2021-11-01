@@ -16,6 +16,7 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('person_id');
             $table->string('is_archiviato')->default(0);
             $table->string('contract_id');
             $table->string('house_type_id');

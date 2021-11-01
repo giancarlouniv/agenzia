@@ -12,4 +12,14 @@ class Person extends Model
 
     protected $table = 'persons';
     protected $guarded = [];
+
+    public function houses()
+    {
+        return $this->hasMany(\App\Models\House::class);
+    }
+
+    public function richieste()
+    {
+        return $this->hasMany(\App\Models\Richieste::class);
+    }
 }

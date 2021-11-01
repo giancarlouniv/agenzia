@@ -13,4 +13,9 @@ class HousePerson extends Model
     protected $table = 'house_persons';
 
     protected $guarded =[];
+
+    public function house()
+    {
+        return $this->belongsTo(\App\Models\House::class);
+    }
 }

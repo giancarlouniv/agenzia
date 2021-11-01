@@ -40,9 +40,8 @@
          */
         public function create()
         {
-            $persons = Person::orderBy('surname', 'ASC')->get();
             return view('houses.create', [
-                'persons'     => $persons,
+                'persons'     => Person::orderBy('surname', 'ASC')->get(),
                 'contracts'   => Contract::all(),
                 'house_types' => HouseType::all()
             ]);
@@ -52,6 +51,7 @@
         {
             $house = new House();
             $house->contract_id = $request->get('contract_id');
+            $house->person_id = $request->get('person_id');
             $house->house_type_id = $request->get('house_type_id');
             $house->user_id = \Auth::user()->id;
             $house->city = $request->get('city');
@@ -62,13 +62,9 @@
             $house->link = $request->get('link');
             $house->is_ascensore = $request->get('is_ascensore');
             $house->prezzo = str_replace(',', '', $request->get('prezzo'));
-            if ($house->save()) {
-                HousePerson::create([
-                    'house_id'  => $house->id,
-                    'person_id' => $request->get('person_id')
-                ]);
-            }
-            return redirect(url('/houses/'.$house->id.'/edit'));
+            if ($house->save())
+                return redirect(url('/houses/'.$house->id.'/edit'));
+
         }
 
         /**
@@ -108,6 +104,7 @@
         {
             $house = House::find($id);
             $house->contract_id = $request->get('contract_id');
+            $house->person_id = $request->get('person_id');
             $house->house_type_id = $request->get('house_type_id');
             $house->city = $request->get('city');
             $house->address = $request->get('address');
@@ -117,14 +114,8 @@
             $house->link = $request->get('link');
             $house->is_ascensore = $request->get('is_ascensore');
             $house->prezzo = str_replace(',', '', $request->get('prezzo'));
-            if ($house->save()) {
-                HousePerson::where('house_id', $house->id)->delete();
-                HousePerson::create([
-                    'house_id'  => $house->id,
-                    'person_id' => $request->get('person_id')
-                ]);
-            }
-            return redirect(url('/houses'));
+            if ($house->save()) return redirect(url('/houses'));
+
         }
 
         /**
