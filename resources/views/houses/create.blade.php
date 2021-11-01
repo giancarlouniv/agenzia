@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="customer_id">Nominativo*</label> <span> (non è presente in anagrafica? <a href="{{url('/persons')}}/create"> + Crea Nominativo</a> )</span>
-                                <select name="person_id" class="select2" style="width: 100%;" id="person_id">
+                                <select name="person_id" class="select2" style="width: 100%;" id="person_id" required>
                                     @foreach($persons as $person)
                                         <option value="{{$person->id}}">
                                             {{$person->surname . ' ' . $person->name}} - {{$person->phone}}</option>

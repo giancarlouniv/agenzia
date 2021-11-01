@@ -38,7 +38,7 @@
                                 </tr>
                                 </thead>
                                 <tbody id="result">
-                                @foreach($persons as $person)
+                                @forelse($persons as $person)
                                     <tr>
                                         <td>{{$person->surname}} {{$person->name}}</td>
                                         <td>{{$person->email}}</td>
@@ -51,7 +51,13 @@
                                                 {!! Form::close() !!}
                                         </td>
                                     </tr>
-                                @endforeach
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" style="text-align: center">
+                                                <i>Nessun nominativo presente</i>
+                                            </td>
+                                        </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

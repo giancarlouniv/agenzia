@@ -35,7 +35,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($houses as $house)
+                                @forelse($houses as $house)
                                     <tr>
                                         <td style="white-space: nowrap">
                                             @foreach($house->persons as $person)
@@ -57,7 +57,13 @@
                                                 {!! Form::close() !!}
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="8" style="text-align: center">
+                                            <i>Nessun immobile presente</i>
+                                        </td>
+                                    </tr>
+                                @endforelse
                                 </tbody>
                             </table>
                         </div>
