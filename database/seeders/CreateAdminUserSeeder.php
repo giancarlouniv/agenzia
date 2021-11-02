@@ -24,20 +24,18 @@
             ]);
 
             $user2 = User::create([
-                'name' => 'Luciano',
-                'email' => 'lucianofrenna@gmail.com',
-                'password' => Hash::make('123456789')
+                'name' => 'Luciano Frenna',
+                'email' => 'agenzia.easyimmobiliare@gmail.com',
+                'password' => Hash::make('Viagela6')
             ]);
 
             $role = Role::create(['name' => 'Amministratore']);
-            $role2 = Role::create(['name' => 'Utente']);
 
             $permissions = Permission::pluck('id','id')->all();
 
             $role->syncPermissions($permissions);
-            $role2->syncPermissions($permissions);
 
             $user->assignRole([$role->id]);
-            $user2->assignRole([$role2->id]);
+            $user2->assignRole([$role->id]);
         }
     }
