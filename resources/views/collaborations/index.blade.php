@@ -17,7 +17,18 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Lista Agenzie / Collaborazioni</h3>
+                        <div class="row d-flex justify-content-between">
+                            <div>
+                                <h3 class="card-title">Lista Agenzie / Collaborazioni</h3>
+                            </div>
+                            <div class="form-inline">
+                                <div class="form-group mx-sm-8 mb-2">
+                                    <input type="text" style="width: 300px!important;" class="form-control mb-2" id="search-box" placeholder="Cerca agenzia, referente...">
+                                    <button type="button" class="btn btn-primary mb-2 ml-2" onclick="Search()">Cerca</button>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body table-responsive p-0">
                         <div class="card-body table-responsive p-2">
@@ -31,14 +42,14 @@
                                     <th>&nbsp;</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="result">
                                 @forelse($collaborators as $collaborator)
                                     <tr>
                                         <td>{{$collaborator->name}}</td>
                                         <td>{{$collaborator->status}}</td>
                                         <td>{{$collaborator->ref}}</td>
                                         <td>{{$collaborator->note}}</td>
-                                        <td><a href="{{env('APP_URL')}}collaborations/{{$collaborator->id}}/edit" class="btn btn-secondary btn-sm">Edit</a></td>
+                                        <td><a href="{{env('APP_URL')}}collaborations/{{$collaborator->id}}/edit" class="btn btn-secondary">Edit</a></td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -92,6 +103,29 @@
             } else {
                 $("#form_"+id).unbind('submit').submit()
             }
+        }
+
+        const Search = () => {
+            let text = document.getElementById('search-box').value;
+            let resultDiv = document.getElementById('result');
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                jQuery.ajax({
+                    url: "{{env('APP_URL')}}collaboration/search",
+                    method: 'post',
+                    datatype: 'json',
+                    data: { search: text},
+                    success: function(response){
+                        resultDiv.innerHTML = response;
+                    },
+                    error: function(error){
+                        console.log(error);
+                    }
+                });
         }
     </script>
 

@@ -18,6 +18,9 @@
         Route::resource('houses', '\App\Http\Controllers\HouseController');
         Route::resource('customers', '\App\Http\Controllers\CustomerController');
         Route::resource('richieste', '\App\Http\Controllers\RichiesteController');
+
+        Route::post('collaboration/search', [\App\Http\Controllers\CollaborationController::class, 'search']);
+
         Route::resource('collaborations', '\App\Http\Controllers\CollaborationController');
 
         Route::post('upload/house/{house_id}', [App\Http\Controllers\HouseController::class, 'uploadphoto']);

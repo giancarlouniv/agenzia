@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CollaborationController extends Controller
 {
+
+    private $columns_searcheable = [
+        'name',
+        'ref',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -89,5 +95,23 @@ class CollaborationController extends Controller
     public function destroy(Collaboration $collaboration)
     {
         //
+    }
+
+    public function search(Request $request){
+        $collaborations = Collaboration::where(function ($query) use ($request) {
+            if (strlen($request->get('search'))) {
+                $searchs = explode(" ", $request->get('search'));
+                foreach ($searchs as $search) {
+                    $query->where(function ($query) use ($search) {
+                        foreach ($this->columns_searcheable as $column) {
+                            $query->orWhere($column, 'LIKE', "%".$search."%");
+                        }
+                    });
+                }
+            }
+        })
+            ->get();
+
+        return view('collaborations/table', compact('collaborations'));
     }
 }
