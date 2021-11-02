@@ -18,7 +18,7 @@
     {
         function __construct()
         {
-            $this->middleware('role:Amministratore')->except('index', 'edit');;
+            $this->middleware('role:Amministratore')->except('index', 'edit');
         }
 
         public function index(Request $request)

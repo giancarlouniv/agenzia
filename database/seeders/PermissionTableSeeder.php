@@ -20,7 +20,8 @@
                 'richieste-menu',
                 'nominativi-menu',
                 'customers-menu',
-                'impostazioni-menu'
+                'impostazioni-menu',
+                'collaborazioni-menu',
             ];
 
             foreach ($permissions as $permission) {

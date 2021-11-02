@@ -83,6 +83,17 @@
                         </a>
                     </li>
                 @endcan
+                @can('collaborazioni-menu')
+                    <li class="nav-header">COLLABORAZIONI</li>
+                    <li class="nav-item">
+                        <a href="{{url('/collaborations')}}" class="nav-link {{(request()->is('collaborations') || request()->is('collaborations/*'))?'active':''}}">
+                            <i class="fas fa-users"></i>
+                            <p class="ml-1">
+                                Lista agenzie
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 @can('customers-menu')
                     <li class="nav-header">CLIENTI</li>
                 @endcan

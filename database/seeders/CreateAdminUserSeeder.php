@@ -30,6 +30,7 @@
             ]);
 
             $role = Role::create(['name' => 'Amministratore']);
+            $role2 = Role::create(['name' => 'Utente']);
 
             $permissions = Permission::pluck('id','id')->all();
 
